@@ -44,12 +44,12 @@ int[][][] shapes = {
 };
 
 color[] colors = {
-    color (0, 240, 240),
-    color (00, 0, 240),
-    color (240, 160, 0),
-    color (240, 240, 0),
-    color (0, 240, 0),
-    color (240, 0, 0),
-    color (160, 0, 240),
+    color (0, 201, 223),
+    color (247, 167, 0),
+    color (0, 100, 200),
+    color (255, 239, 43),
+    color (0, 230, 50),
+    color (220, 0, 0),
+    color (155, 0, 190),
     color (255)
 };

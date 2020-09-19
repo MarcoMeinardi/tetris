@@ -50,16 +50,28 @@ class Game {
         push ();
         
         stroke (0);
-        strokeWeight (3);
-        noFill ();
         translate (300, 25);
-        rect (0, 0, 400, 800);
+        strokeWeight (4);
+        fill (255);
+        rect (-1, -1, 402, 802);
         
         strokeWeight (1);
+        stroke (0, 100);
+        for (int i = 1; i < 10; i++) {
+            line (i * dim, 0, i * dim, 800);
+        }
+        for (int i = 1; i < 20; i++) {
+            line (0, i * dim, 400, i * dim);
+        }
+        
+        stroke (0);
+        strokeWeight (2);
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
-                fill (color_grid[i][j]);
-                rect (j * dim, i * dim, dim, dim);
+                if (grid[i][j] == 1) {
+                    fill (color_grid[i][j]);
+                    rect (j * dim, i * dim, dim, dim);
+                }
             }
         }
         
@@ -69,12 +81,17 @@ class Game {
         push ();
         
         stroke (0);
-        strokeWeight (3);
-        noFill ();
-        translate (750, 65);
+        strokeWeight (4);
+        fill (255);
+        translate (750, 150);
         rect (0, 0, 200, 200);
         
-        strokeWeight (1);        
+        
+        textAlign (CENTER);
+        fill (0);
+        text ("NEXT", 100, -40);
+        
+        strokeWeight (2);        
         fill (next_piece.col);
         if (next_piece.id == 0) {
             translate (dim / 2, dim);
@@ -98,13 +115,17 @@ class Game {
         push ();
         
         stroke (0);
-        strokeWeight (3);
-        noFill ();
-        translate (50, 65);
+        strokeWeight (4);
+        fill (255);
+        translate (50, 150);
         rect (0, 0, 200, 200);
         
+        textAlign (CENTER);
+        fill (0);
+        text ("HELD", 100, -40);
+        
         if (has_hold_piece) {
-            strokeWeight (1);        
+            strokeWeight (2);        
             fill (hold_piece.col);
             if (hold_piece.id == 0) {
                 translate (dim / 2, dim);
@@ -122,6 +143,17 @@ class Game {
                 }
             }
         }
+        
+        pop ();
+        
+        // GUI
+        push ();
+        
+        translate (760, 450);
+        textSize (30);
+        fill (0);
+        text ("SCORE: " + score, 0, 0);
+        text ("LINES: " + lines_cleared, 0, 60);
         
         pop ();
     }

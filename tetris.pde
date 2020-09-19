@@ -4,7 +4,7 @@ Game game;
 void setup () {
     size (1000, 850);
     game = new Game ();
-    
+    textFont (createFont ("Bungee Inline", 50));
 }
 
 void draw () {
@@ -12,7 +12,7 @@ void draw () {
         noLoop ();
         println ("game over");
     }
-    background (255);
+    background (230);
     game.show();
 }
 
