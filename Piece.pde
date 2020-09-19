@@ -5,13 +5,26 @@ class Piece {
     color col;
     int n;
     
-    Piece (int x, int y, int shape) {
-        pos_x = x;
-        pos_y = y;
+    Piece (int shape) {
         id = shape;
-        blocks = shapes[id];
+        if (id == 3) {
+            pos_x = 4;
+            pos_y = 0;
+        } else if (id == 0) {
+            pos_x = 3;
+            pos_y = -1;
+        } else {
+            pos_x = 3;
+            pos_y = 0;
+        }
+        
+        n = shapes[id].length;
+        blocks = new int[n][n];
+        
+        for (int i = 0; i < n; i++) {
+            blocks[i] = shapes[id][i].clone();
+        }
         col = colors[id];
-        n = blocks.length;
     }
     
     void rotate_acl () {
@@ -38,5 +51,17 @@ class Piece {
                 blocks[x][n - y - 1] = save;
             }
         }
+    }
+    
+    
+    Piece clone () {
+        Piece new_piece = new Piece (id);
+        new_piece.col = col;
+        new_piece.n = n;
+        for (int i = 0; i < n; i++) {
+            new_piece.blocks[i] = blocks[i].clone();
+        }
+        
+        return new_piece;
     }
 }
